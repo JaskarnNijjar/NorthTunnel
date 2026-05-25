@@ -1,0 +1,18 @@
+services:
+  client_service:
+    build: .
+    command: ["python", "vpn_client.py"]
+    cap_add:
+      - NET_ADMIN
+    networks: 
+      - northtunnel_network
+
+  server_service:
+    build: .
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - northtunnel_network
+
+networks:
+  northtunnel_network:
