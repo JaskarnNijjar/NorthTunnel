@@ -1,6 +1,8 @@
 services:
   client_service:
     build: .
+    environment:
+      - PYTHONUNBUFFERED=1
     command: ["python", "vpn_client.py"]
     cap_add:
       - NET_ADMIN
