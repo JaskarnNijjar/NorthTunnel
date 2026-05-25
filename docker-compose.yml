@@ -9,6 +9,11 @@ services:
 
   server_service:
     build: .
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8888:8888/udp" 
+    command: ["python", "vpn_server.py"]
     cap_add:
       - NET_ADMIN
     networks:
