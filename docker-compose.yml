@@ -3,6 +3,7 @@ services:
     build: .
     environment:
       - PYTHONUNBUFFERED=1
+      - VPN_KEY=${VPN_KEY}
     command: ["python", "vpn_client.py"]
     cap_add:
       - NET_ADMIN
@@ -13,6 +14,7 @@ services:
     build: .
     environment:
       - PYTHONUNBUFFERED=1
+      - VPN_KEY=${VPN_KEY}
     ports:
       - "8888:8888/udp" 
     command: ["python", "vpn_server.py"]
