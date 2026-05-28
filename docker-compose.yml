@@ -4,7 +4,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - VPN_KEY=${VPN_KEY}
-    command: ["python", "vpn_client.py"]
+    command: ["bash", "client_start.sh"]
     cap_add:
       - NET_ADMIN
     devices:
@@ -18,12 +18,14 @@ services:
       - PYTHONUNBUFFERED=1
       - VPN_KEY=${VPN_KEY}
     ports:
-      - "8888:8888/udp" 
-    command: ["python", "vpn_server.py"]
+      - "8888:8888/udp"
+    command: ["bash", "server_start.sh"]
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun
+    sysctls:
+      - net.ipv4.ip_forward=1
     networks:
       - northtunnel_network
 
