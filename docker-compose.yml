@@ -7,6 +7,8 @@ services:
     command: ["python", "vpn_client.py"]
     cap_add:
       - NET_ADMIN
+    devices:
+      - /dev/net/tun
     networks: 
       - northtunnel_network
 
@@ -20,6 +22,8 @@ services:
     command: ["python", "vpn_server.py"]
     cap_add:
       - NET_ADMIN
+    devices:
+      - /dev/net/tun
     networks:
       - northtunnel_network
 
